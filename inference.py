@@ -46,7 +46,7 @@ def main(args):
     input_roll_list = args.input_roll
     ref_eyeblink = args.ref_eyeblink
     ref_pose = args.ref_pose
-    use_idle_mode = args.use_idle_mode
+    use_idle_mode = False # args.use_idle_mode
     length_of_audio = args.length_of_audio
     use_ref_video = False # args.use_ref_video
     ref_info = args.ref_info
@@ -92,7 +92,7 @@ def main(args):
             audio_path = audio_path.replace('.mp3', '.wav')
         else:
             print("audio_path:"+audio_path)
-            shutil.move(audio_path, input_dir)
+            shutil.copy(audio_path, input_dir)
 
     elif use_idle_mode:
         audio_path = os.path.join(input_dir, 'idlemode_'+str(length_of_audio)+'.wav') ## generate audio from this new audio_path
@@ -101,7 +101,7 @@ def main(args):
         one_sec_segment.export(audio_path, format="wav")
     else:
         print(use_ref_video, ref_info)
-        assert use_ref_video == True and ref_info == 'all'
+        # assert use_ref_video == True and ref_info == 'all'
 
     if use_ref_video and ref_info == 'all': # full ref mode
         ref_video_videoname = os.path.basename(ref_video)
@@ -208,9 +208,9 @@ if __name__ == '__main__':
     parser.add_argument("--preprocess", default='crop', choices=['crop', 'extcrop', 'resize', 'full', 'extfull'], help="how to preprocess the images" ) 
     parser.add_argument("--verbose",action="store_true", help="saving the intermedia output or not" ) 
     parser.add_argument("--old_version",action="store_true", help="use the pth other than safetensor version" ) 
-    parser.add_argument("--use_idle_mode",action="store_false", help="use_idle_mode" ) 
+    parser.add_argument("--use_idle_mode",default=False, action="store_false", help="use_idle_mode" ) 
     parser.add_argument("--length_of_audio", type=int, default=0,  help="length_of_audio")
-    parser.add_argument("--use_ref_video",action="store_false", help="use_ref_video" ) 
+    parser.add_argument("--use_ref_video",default=False,action="store_false", help="use_ref_video" ) 
     parser.add_argument("--ref_info", default=None, choices=['pose', 'blink', 'pose+blink', 'all'], help="" ) 
     parser.add_argument("--ref_video", default=None, help="ref_video")
     parser.add_argument("--use_blink",action="store_true", help="use_blink" ) 

@@ -111,10 +111,14 @@ def get_data(first_coeff_path, audio_path, device, ref_eyeblink_coeff_path, stil
     indiv_mels = indiv_mels.to(device)
     ratio = ratio.to(device)
     ref_coeff = ref_coeff.to(device)
+    print("indiv_mels" + str(len(indiv_mels)))
+    print("ref_coeff" + str(len(ref_coeff)))
+    print("num_frames" + str(len(num_frames)))
+    print("ref_coeff" + str(len(ref_coeff)))
 
     return {'indiv_mels': indiv_mels,  
             'ref': ref_coeff, 
             'num_frames': num_frames, 
-            'ratio_gt': ratio,
+            'ratio_gt': ref_coeff,
             'audio_name': audio_name, 'pic_name': pic_name}
 

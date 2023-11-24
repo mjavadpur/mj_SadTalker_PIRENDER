@@ -48,6 +48,7 @@ def enhancer_generator_no_len(images, method='gfpgan', bg_upsampler='realesrgan'
     if not isinstance(images, list) and os.path.isfile(images): # handle video to images
         images = load_video_to_cv2(images)
 
+    print(" ----- Enhancer is: "+ method)
     # ------------------------ set up GFPGAN restorer ------------------------
     if  method == 'gfpgan':
         arch = 'clean'

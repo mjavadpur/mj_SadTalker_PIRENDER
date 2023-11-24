@@ -12,10 +12,10 @@ mkdir ./checkpoints
 # wget -nc https://github.com/Winfredy/SadTalker/releases/download/v0.0.2/hub.zip -O ./checkpoints/hub.zip
 # unzip -n ./checkpoints/hub.zip -d ./checkpoints/
 
-!gdown https://drive.google.com/uc?id=1-0xOf6g58OmtKtEWJlU3VlnfRqPN9Uq7 
-!unzip -x ./face.zip
-%mv /content/mj_SadTalker_pirender/face/latest_checkpoint.txt /content/mj_SadTalker_pirender/checkpoints
-%mv /content/mj_SadTalker_pirender/face/epoch_00190_iteration_000400000_checkpoint.pt /content/mj_SadTalker_pirender/checkpoints
+gdown https://drive.google.com/uc?id=1-0xOf6g58OmtKtEWJlU3VlnfRqPN9Uq7 
+unzip -x ./face.zip
+mv /content/mj_SadTalker_pirender/face/latest_checkpoint.txt /content/mj_SadTalker_pirender/checkpoints
+mv /content/mj_SadTalker_pirender/face/epoch_00190_iteration_000400000_checkpoint.pt /content/mj_SadTalker_pirender/checkpoints
 # rm face.zip
 
 #### download the new links.

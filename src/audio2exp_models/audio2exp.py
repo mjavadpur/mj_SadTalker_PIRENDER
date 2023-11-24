@@ -15,6 +15,8 @@ class Audio2Exp(nn.Module):
         mel_input = batch['indiv_mels']                         # bs T 1 80 16
         bs = mel_input.shape[0]
         T = mel_input.shape[1]
+        
+        print(" -----bs:" + str(bs) + "    ----      T:" + str(T))
 
         exp_coeff_pred = []
 
