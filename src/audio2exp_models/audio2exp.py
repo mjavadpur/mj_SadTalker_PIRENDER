@@ -30,6 +30,7 @@ class Audio2Exp(nn.Module):
 
             audiox = current_mel_input.view(-1, 1, 80, 16)                  # bs*T 1 80 16
 
+            
             curr_exp_coeff_pred  = self.netG(audiox, ref, ratio)         # bs T 64 
 
             exp_coeff_pred += [curr_exp_coeff_pred]
