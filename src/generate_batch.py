@@ -115,6 +115,6 @@ def get_data(first_coeff_path, audio_path, device, ref_eyeblink_coeff_path, stil
     return {'indiv_mels': indiv_mels,  
             'ref': ref_coeff, 
             'num_frames': num_frames, 
-            'ratio_gt': ref_coeff,
+            'ratio_gt': ratio,
             'audio_name': audio_name, 'pic_name': pic_name}
 

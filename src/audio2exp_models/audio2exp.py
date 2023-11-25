@@ -16,9 +16,6 @@ class Audio2Exp(nn.Module):
         bs = mel_input.shape[0]
         T = mel_input.shape[1]
         
-        print(" -----bs:" + str(bs) + "    ----      T:" + str(T))
-        print(" -----mel_input:" + str(mel_input.shape) )
-
         exp_coeff_pred = []
 
         for i in tqdm(range(0, T, 10),'audio2exp:'): # every 10 frames
@@ -29,13 +26,8 @@ class Audio2Exp(nn.Module):
             ref = batch['ref'][:, :, :64][:, i:i+10]
             ratio = batch['ratio_gt'][:, i:i+10]                               #bs T
 
-            print(" -----size ratio:" + str(ratio.shape))
-            print(" -----size ratio:" + str(ratio.shape))
-            print(" -----size ref:" + str(ref.shape))
 
             audiox = current_mel_input.view(-1, 1, 80, 16)                  # bs*T 1 80 16
-            print(" -----size audiox:" + str(audiox.shape))
-
             
             curr_exp_coeff_pred  = self.netG(audiox, ref, ratio)         # bs T 64 
 
